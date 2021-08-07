@@ -8,7 +8,7 @@ private_phone_number = fake.phone_number() #Prywatny numer telefonu
 business_phone_number = fake.phone_number() # Służbowy numer telefonu
 job = fake.job() #Praca co robi
 company = fake.company() #Nazwa firmy
-
+number = fake.random_int(min = 1, max = 10) # losowa liczba od 1 do 10
 class BaseContact:
     def __init__(self, first_name, last_name, email, private_phone_number):
         self.first_name = first_name
@@ -27,7 +27,8 @@ class BaseContact:
     def contact(self):
         print(f'Wybieram prywatny numer {private_phone_number} i dzwonię do {first_name} {last_name}')
         
-    
+
+
 
 class BusinessContact(BaseContact):
     def __init__(self, company, job, business_phone_number, *args, **kwargs):
@@ -39,11 +40,25 @@ class BusinessContact(BaseContact):
     def contact_business(self):
         print(f'Wybieram numer służbowy{business_phone_number} i dzwonię do {first_name} {last_name}')
     
+def create_contacts(type, first_name, last_name, email, private_phone_number=None, company=None, job=None, business_phone_number=None):
+    if type == BaseContact:
+        for i in range(number):
+            print(f'Prywatna wizytówka {first_name} {last_name} {email}')                                                
+    elif type == BusinessContact:
+        for i in range(number):
+            print(f'Służbowa wizytówka {first_name} {last_name} {email}')
+    
 
-Person_one = BaseContact(first_name, last_name, email, private_phone_number)
-Person_one = BusinessContact(first_name, last_name, email, private_phone_number, company, job, business_phone_number)
+    
 
-Person_one.contact()
-Person_one.contact_business()
-Person_one.label_lenght
+person_one = BusinessContact(first_name, last_name, email, private_phone_number, company, job, business_phone_number)
 
+person_one.contact()
+person_one.contact_business()
+person_one.label_lenght
+
+print()
+
+create_contacts(BaseContact, first_name, last_name, email)
+create_contacts(BusinessContact, first_name, last_name, email)
+print(f'Liczba wizytówek na każdy rodzaj to {number}')
