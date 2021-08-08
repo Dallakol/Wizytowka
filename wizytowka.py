@@ -50,7 +50,6 @@ def create_contacts(type, first_name, last_name, email, private_phone_number=Non
 
 cards = [] 
 
-
 person_one = BusinessContact(first_name, last_name, email, private_phone_number, company, job, business_phone_number)
 
 person_one.contact()
