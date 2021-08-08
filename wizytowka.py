@@ -36,20 +36,20 @@ class BusinessContact(BaseContact):
         self.company =company
         self.job = job
         self.business_phone_number = business_phone_number
-   
+  
     def contact_business(self):
         print(f'Wybieram numer służbowy{business_phone_number} i dzwonię do {first_name} {last_name}')
     
-def create_contacts(type, first_name, last_name, email, private_phone_number=None, company=None, job=None, business_phone_number=None):
+def create_contacts(type, first_name, last_name, email, private_phone_number=None, company=None, job=None, business_phone_number=None):   
     if type == BaseContact:
-        for i in range(number):
-            print(f'Prywatna wizytówka {first_name} {last_name} {email}')                                                
+        base_card = (f'Prywatna wizytówka {first_name} {last_name} {email}')
+        cards.append(base_card)
     elif type == BusinessContact:
-        for i in range(number):
-            print(f'Służbowa wizytówka {first_name} {last_name} {email}')
-    
+        business_card = (f'Służbowa wizytówka {first_name} {last_name} {email}')
+        cards.append(business_card)                                             
 
-    
+cards = [] 
+
 
 person_one = BusinessContact(first_name, last_name, email, private_phone_number, company, job, business_phone_number)
 
@@ -61,4 +61,6 @@ print()
 
 create_contacts(BaseContact, first_name, last_name, email)
 create_contacts(BusinessContact, first_name, last_name, email)
+for i in range(number):
+    print(cards)   #Tu robiłem testy dla losowych wizytówek
 print(f'Liczba wizytówek na każdy rodzaj to {number}')
